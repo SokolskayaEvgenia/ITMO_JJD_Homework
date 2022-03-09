@@ -40,6 +40,8 @@ public class Task02 {
                     System.out.println("Частное равно: " + result);
                 }
                 break;
+            default:
+                System.out.println("Ошибка ввода");
         }
 
     }
