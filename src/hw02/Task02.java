@@ -17,9 +17,9 @@ public class Task02 {
      */
 
     public static void main(String[] args) {
-        double firstNumber = -5, secondNumber = 0;
+        double firstNumber = -5, secondNumber = 1;
         double result;
-        int op = 9;
+        byte op = 9;
         switch (op) {
             case 3:
                 result = firstNumber + secondNumber;
@@ -34,8 +34,11 @@ public class Task02 {
                 System.out.println("Произведение равно: " + result);
                 break;
             case 9:
-                result = firstNumber / secondNumber;
-                System.out.println("Частное равно: " + result);
+                if (secondNumber == 0) System.out.println("на 0 не делим");
+                else {
+                    result = firstNumber / secondNumber;
+                    System.out.println("Частное равно: " + result);
+                }
                 break;
         }
 
