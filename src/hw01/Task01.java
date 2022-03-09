@@ -1,4 +1,4 @@
-package HW01;
+package hw01;
 
 //задача на тернарный оператор
 public class Task01 {

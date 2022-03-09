@@ -1,4 +1,4 @@
-package HW02;
+package hw02;
 
 public class Task02 {
 

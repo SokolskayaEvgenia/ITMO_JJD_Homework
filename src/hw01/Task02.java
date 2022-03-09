@@ -1,4 +1,4 @@
-package HW01;
+package hw01;
 
 //задача на арифметические операторы
 public class Task02 {
