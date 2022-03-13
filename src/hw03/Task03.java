@@ -33,7 +33,7 @@ public class Task03 {
                         continue;
                     }
                     if (userNumber == 0) break out;
-                    if (userNumber > number) System.out.println("Загаданное число меньше");
+                    else if (userNumber > number) System.out.println("Загаданное число меньше");
                     else System.out.println("Загаданное число больше");
                 }
                 System.out.println("Вы угадали!");
