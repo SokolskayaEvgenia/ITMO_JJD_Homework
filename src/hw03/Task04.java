@@ -14,23 +14,20 @@ public class Task04 {
     public static void main(String[] args) {
         System.out.println("Загадайте число от 2 до 100.");
         int start = 2, end = 100;
-        int number = (end + start) / 2;
-        System.out.println("Вы загадали " + number + "?");
+        int number;
         Scanner in = new Scanner(System.in);
-        byte answer = in.nextByte();
-        if (answer == 1) System.out.println("Вот это я молодец!");
-        else {
-            while (answer != 1) {
-                System.out.println("Число больше?");
-                answer = in.nextByte();
-                if (answer == 1) start = number;
-                else end = number;
-                number = (end + start) / 2;
-                System.out.println("Вы загадали " + number + "?");
-                answer = in.nextByte();
-            }
-            System.out.println("Угадано!)))");
+        while (true) {
+            number = (end + start) / 2;
+            System.out.println("Вы загадали " + number + "?");
+            byte answer = in.nextByte();
+            if (answer == 1) break;
+            System.out.println("Число больше?");
+            answer = in.nextByte();
+            if (answer == 1) start = number;
+            else end = number;
         }
+        System.out.println("Угадано!)))");
+
 
     }
 }
