@@ -27,13 +27,13 @@ public class Task03 {
         try {
             out:
             {
-                for (int userNumber = scanner.nextInt(); userNumber != number; System.out.println("Угадайте число введите 0 для выхода: "), userNumber = scanner.nextInt()) {
+                for (int userNumber = scanner.nextInt(); userNumber != number; System.out.println("Угадайте или число введите 0 для выхода: "), userNumber = scanner.nextInt()) {
                     if (userNumber < 0 || userNumber > 9) {
                         System.out.println("Введите число из диапазона");
                         continue;
                     }
                     if (userNumber == 0) break out;
-                    else if (userNumber > number) System.out.println("Загаданное число меньше");
+                    if (userNumber > number) System.out.println("Загаданное число меньше");
                     else System.out.println("Загаданное число больше");
                 }
                 System.out.println("Вы угадали!");
