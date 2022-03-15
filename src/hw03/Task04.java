@@ -20,9 +20,18 @@ public class Task04 {
             number = (end + start) / 2;
             System.out.println("Вы загадали " + number + "?");
             byte answer = in.nextByte();
+            if (answer != 1 && answer != 0) {
+                System.out.println("Введите корректный ответ: 1 - ДА, 0 - НЕТ");
+                continue;
+            }
             if (answer == 1) break;
             System.out.println("Число больше?");
             answer = in.nextByte();
+            if (answer != 1 && answer != 0) {
+                System.out.println("Введите корректный ответ: 1 - ДА, 0 - НЕТ");
+                System.out.println("Число больше?");
+                answer = in.nextByte();
+            }
             if (answer == 1) start = number;
             else end = number;
         }
@@ -31,4 +40,5 @@ public class Task04 {
 
     }
 }
+
 
