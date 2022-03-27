@@ -5,15 +5,8 @@ public class Climber {
     private String name;
     private String address;
 
-    public Climber() {
-    }
-
-    public Climber(String name) {
-        setName(name);
-    }
-
     public Climber(String name, String address) {
-        this(name);
+        setName(name);
         setAddress(address);
     }
 
@@ -21,7 +14,7 @@ public class Climber {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == null || name.length() < 3)
             throw new IllegalArgumentException("Имя альпиниста не может быть менее 3 символов");
         this.name = name;
@@ -31,7 +24,7 @@ public class Climber {
         return address;
     }
 
-    public void setAddress(String address) {
+    private void setAddress(String address) {
         if (address == null || address.length() < 5)
             throw new IllegalArgumentException("Адрес проживания альпиниста не может быть менее 5 символов");
         this.address = address;

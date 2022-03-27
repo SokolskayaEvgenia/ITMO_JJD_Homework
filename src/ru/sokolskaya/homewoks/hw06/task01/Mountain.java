@@ -6,15 +6,8 @@ public class Mountain {
     private String country;
     private int height;
 
-    public Mountain() {
-    }
-
-    public Mountain(String name) {
-        setName(name);
-    }
-
     public Mountain(String name, String country) {
-        this(name);
+        setName(name);
         setCountry(country);
     }
 
@@ -23,7 +16,7 @@ public class Mountain {
         setHeight(height);
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == null || name.length() < 4) {
             throw new IllegalArgumentException("Название горы не может быть менее 4 символов");
         }
@@ -34,27 +27,29 @@ public class Mountain {
         return name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
+    private void setCountry(String country) {
         if (country == null || country.length() < 4) {
             throw new IllegalArgumentException("Название страны нахождения горы не может быть менее 4 символов");
         }
         this.country = country;
     }
 
-    public int getHeight() {
-        return height;
+    public String getCountry() {
+        return country;
     }
 
+    // метод setHeight с модификатором доступа public, т.к. альпинист может покорить новую высоту
     public void setHeight(int height) {
         if (height < 100) {
             throw new IllegalArgumentException("Высота горы не может быть менее 100 метров");
         }
         this.height = height;
     }
+
+    public int getHeight() {
+        return height;
+    }
+
 
     @Override
     public String toString() {

@@ -4,37 +4,30 @@ import java.util.Arrays;
 
 public class ClimbingGroup {
 
+    private int number;
     private Mountain mountain;
     private int quantity;
-    private Climber[] climbers = new Climber[5];
+    private final Climber[] climbers;
     private boolean isRecruiting = true;
 
-    public ClimbingGroup(){}
-
-    public ClimbingGroup(Mountain mountain){
+    public ClimbingGroup(int number, Mountain mountain, int quantity) {
+        this.number = number;
         setMountain(mountain);
-    }
-
-    public ClimbingGroup(Mountain mountain, int quantity){
-        this(mountain);
         setQuantity(quantity);
-    }
-
-    public ClimbingGroup(Mountain mountain, int quantity, boolean  isRecruiting){
-       this(mountain, quantity);
-       setRecruiting(isRecruiting);
+        climbers = new Climber[quantity];
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
-        if (quantity<2 || quantity>15) throw new IllegalArgumentException("В группе восхождения должно быть от 2 до 15 человек");
+    private void setQuantity(int quantity) {
+        if (quantity < 2 || quantity > 15)
+            throw new IllegalArgumentException("В группе восхождения должно быть от 2 до 15 человек");
         this.quantity = quantity;
     }
 
-    public Climber[] getClimbers(){
+    public Climber[] getClimbers() {
         return climbers;
     }
 
@@ -42,7 +35,7 @@ public class ClimbingGroup {
         return mountain;
     }
 
-    public void setMountain(Mountain mountain) {
+    private void setMountain(Mountain mountain) {
         if (mountain == null) throw new IllegalArgumentException("На эту гору не совершаем восхождения");
         this.mountain = mountain;
     }
@@ -51,35 +44,39 @@ public class ClimbingGroup {
         return isRecruiting;
     }
 
+
+
     public void setRecruiting(boolean recruiting) {
         isRecruiting = recruiting;
     }
 
-    public void addClimber(Climber climber){
+    public void addClimber(Climber climber) {
         for (int i = 0; i < climbers.length; i++) {
-            if (!isRecruiting()){
-                System.out.println("Набор в группу закрыт");
+            if (!isRecruiting()) {
+                System.out.println("Набор в группу " + this.number + " закрыт");
                 return;
             }
-            if(climbers[i] == null){
+            if (climbers[i] == null) {
                 climbers[i] = climber;
+                if (i == climbers.length - 1) {
+                    this.setRecruiting(false);
+                    System.out.println("В группе " + this.number + " не осталось свободных мест");
+                }
                 return;
             }
-
-        }this.setRecruiting(false);
-        System.out.println("В группе не осталось свободных мест");
-
+        }
     }
 
-    public void addClimber(Climber... climbers){
-        System.out.println(Arrays.toString(climbers));
+    public void addClimber(Climber... climbers) {
+        //System.out.println(Arrays.toString(climbers));
         for (Climber climber : climbers) addClimber(climber);
     }
 
     @Override
     public String toString() {
         return "ClimbingGroup{" +
-                "mountain=" + mountain +
+                "number=" + number +
+                ", mountain=" + mountain +
                 ", quantity=" + quantity +
                 ", climbers=" + Arrays.toString(climbers) +
                 ", isRecruiting=" + isRecruiting +
