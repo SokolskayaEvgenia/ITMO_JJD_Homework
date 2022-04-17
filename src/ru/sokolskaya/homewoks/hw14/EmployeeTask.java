@@ -8,21 +8,22 @@ public class EmployeeTask {
         // Создать список объектов List<Employee> (использовать метод employeeGenerator)
         List<Employee> employees = Employee.employeeGenerator(4);
         System.out.println(employees);
+        Comparator<Employee> byName = new NameComparator();
+        Comparator<Employee> bySalary = new SalaryComparator();
+        Comparator<Employee> byAge = new AgeComparator();
+        Comparator<Employee> byCompany = new CompanyComparator();
 
         // и сортировать по:
         // имени
-        Comparator<Employee> comparator1 = new NameComparator();
-        employees.sort(comparator1);
+        employees.sort(byName);
         System.out.println(employees);
 
         // имени и зарплате
-        Comparator<Employee> comparator2 = comparator1.thenComparing(new SalaryComparator());
-        employees.sort(comparator2);
+        employees.sort(byName.thenComparing(bySalary));
         System.out.println(employees);
 
         // имени, зарплате, возрасту и компании
-        Comparator<Employee> comparator3 = comparator2.thenComparing(new AgeComparator()).thenComparing(new CompanyComparator());
-        employees.sort(comparator3);
+        employees.sort(byName.thenComparing(bySalary).thenComparing(byAge).thenComparing(byCompany));
         System.out.println(employees);
 
 

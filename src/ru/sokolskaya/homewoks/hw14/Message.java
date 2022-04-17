@@ -64,18 +64,24 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "code=" + code +
-                ", priority=" + priority +
-                '}';
+        return "{" + priority +
+                ", "+ code + "}";
     }
 
     public static void main(String[] args) {
         List<Message> messages = MessageGenerator.generate(34);
         System.out.println(messages);
-        //MessageTask.countEachPriority(messages);
-        //MessageTask.countEachCode(messages);
+        MessageTask.countEachPriority(messages);
+        System.out.println("------------------------");
+        MessageTask.countEachCode(messages);
+        System.out.println("------------------------");
         MessageTask.uniqueMessageCount(messages);
+        System.out.println("------------------------");
+        System.out.println(MessageTask.uniqueMessagesInOriginalOrder(messages));
+        System.out.println("------------------------");
+        MessageTask.removeEach(messages, MessagePriority.LOW);
+        System.out.println("------------------------");
+        MessageTask.removeOther(messages, MessagePriority.URGENT);
     }
 }
 
